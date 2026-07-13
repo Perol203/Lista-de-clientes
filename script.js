@@ -1,13 +1,30 @@
 
 import { ApiC } from "./api.js";
 
-
 const clientList = document.getElementById("clientes");
+
+function renderClient(client) {
+  const item = document.createElement("li");
+  item.innerHTML = `${client.client} :|:  ${client.hour} :|: ${client.email}`;
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "X";
+  deleteButton.className = "delete";
+  deleteButton.dataset.id = client._id;
+  item.appendChild(deleteButton);
+  clientList.appendChild(item);
+}
 
 document.getElementById("Add").addEventListener("click", () => {
   const Nclient = document.getElementById("NewClient").value;
   const Nhour = document.getElementById("Nhour").value;
+  const Nemail = document.getElementById("email").value;
 
+
+  if (!Nclient || !Nhour || !Nemail) {
+    alert("Preencha o nome do cliente e o horário.");
+    return;
+  }
 
     fetch(ApiC, {
       method: "POST",
@@ -17,31 +34,39 @@ document.getElementById("Add").addEventListener("click", () => {
       body: JSON.stringify({ 
         client: Nclient,
         hour: Nhour,
+        email: Nemail,
      
        }),
     })
     .then((response) => response.json())
-
     .then((data) => {
-    console.log(data);
-
-            const item = document.createElement("li");
-              item.innerHTML = `${data.client}-${data.hour}`;
-      
-              const dellBtn = document.createElement("button");
-              dellBtn.textContent = "X";
-              dellBtn.className = "delete";
-              dellBtn.dataset.id = data._id;
-              
-
-              item.appendChild(dellBtn);
-              clientList.appendChild(item);
-              
+      console.log(data);
+      renderClient(data);
+      document.getElementById("NewClient").value = "";
+      document.getElementById("Nhour").value = "";
     })
-
     .catch((error) => {
-      console.error("Erro na req  uisição:", error);
+      console.error("Erro na requisição:", error);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch(ApiC, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      if (Array.isArray(data)) {
+        clientList.innerHTML = "";
+        data.forEach(renderClient);
+      }
     })
+    .catch((error) => {
+      console.error("Erro na requisição:", error);
+    });
 });
 
 clientList.addEventListener("click", (event) => {
