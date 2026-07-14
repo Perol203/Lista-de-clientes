@@ -1,26 +1,44 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurante DomCasmurro</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurante DomCasmurro</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>Restaurante DomCasmurro</header>
 
-    <header>Restaurante DomCasmurro</header>
+  <div class="info" id="info">
+    <div class="status">
+      <h3 id="QuantClient">0/50</h3>
+      <span id="statusText">Clientes cadastrados</span>
+    </div>
+    <div class="search">
+      <input class="NewClient" id="buscador" type="email" placeholder="Buscar cliente por Email">
+      <button class="Buscar" id="Buscar">🔍</button>
+    </div>
+  </div>
 
-    <article class="Card">
-        <h2>Lista de clientes</h2>
-        <input class="NewClient" id="NewClient" type="text" placeholder="Nome">
-        <input class="NewClient" id="Nhour" type="time">
-        <input class="NewClient" id="email" type="email" placeholder="Email">
-        <button id="Add" class="Add">Adicionar</button>
-        <section class="clientes" id="clientes">
-        </section>
-    </article>
+  <section class="popup-overlay" id="popupOverlay">
+    <div class="popup-box" id="Buscado">
+      <button class="close-popup" id="closePopup">×</button>
+      <h1 id="BuscNome">Cliente não encontrado</h1>
+      <h2 id="BuscEmail"></h2>
+      <h2 id="BuscHora"></h2>
+      <h4>Sem nenhum tipo de informação adicional</h4>
+    </div>
+  </section>
 
+  <article class="Card">
+    <h2>Lista de clientes</h2>
+    <input class="NewClient" id="NewClient" type="text" placeholder="Nome">
+    <input class="NewClient" id="Nhour" type="time">
+    <input class="NewClient" id="email" type="email" placeholder="Email">
+    <button id="Add" class="Add">Adicionar</button>
+    <section class="clientes" id="clientes"></section>
+  </article>
 
-    <script type="module" src="script.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

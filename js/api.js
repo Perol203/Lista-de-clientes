@@ -1,0 +1,1 @@
+export const ApiC = "https://crudcrud.com/api/82d18c2435914a2183ace1f168ced9ee/clinet"

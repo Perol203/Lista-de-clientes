@@ -1,21 +1,22 @@
 # Restaurante DomCasmurro
 
-Projeto de lista de clientes desenvolvido com HTML, CSS e JavaScript, com integração a uma API pública para armazenar, exibir e remover registros.
+Projeto de lista de clientes desenvolvido com HTML, CSS e JavaScript, organizado em módulos ES Modules e com interface dinâmica.
 
 ## ✨ Sobre o projeto
 
 Este projeto simula uma pequena interface de cadastro de clientes para o restaurante "DomCasmurro". O usuário pode:
 
-- adicionar um cliente pelo nome;
-- informar um horário;
-- visualizar os itens na lista;
-- excluir um cliente diretamente pela interface.
+- adicionar um cliente com nome, horário e email;
+- visualizar a lista de clientes em tempo real;
+- excluir clientes da lista;
+- buscar um cliente pelo email;
+- ver a quantidade de clientes cadastrados.
 
 ## 🛠️ Tecnologias utilizadas
 
 - HTML5
 - CSS3
-- JavaScript
+- JavaScript ES Modules
 - API externa: CRUD CRUD
 
 ## 📁 Estrutura do projeto
@@ -24,32 +25,38 @@ Este projeto simula uma pequena interface de cadastro de clientes para o restaur
 .
 ├── index.html
 ├── styles.css
-├── script.js
-└── api.js
+├── README.md
+└── js
+    ├── api.js
+    ├── app.js
+    ├── classes.js
+    └── utils.js
 ```
 
 ## ▶️ Como executar
 
 1. Abra o arquivo `index.html` no navegador.
-2. Digite o nome do cliente.
-3. Escolha o horário.
-4. Clique em **Adicionar**.
-5. Use o botão **X** para remover um cliente da lista.
+2. Preencha o nome, o horário e o email do cliente.
+3. Clique em **Adicionar**.
+4. A lista é atualizada automaticamente sem recarregar a página.
+5. Use o botão de busca para localizar um cliente por email.
+6. Clique em **X** para remover um cliente.
 
-## 🔧 Observações
+## 🔧 Organização do código
 
-- O projeto usa o arquivo `api.js` para armazenar a URL da API.
-- A comunicação com a API é feita via `fetch`, usando `POST` para adicionar e `DELETE` para remover.
-- O botão de exclusão usa o `_id` retornado pela API, mas esse identificador não é exibido para o usuário.
+- `classes.js` contém a classe `Cliente` e o método `toJSON()` para enviar dados à API.
+- `utils.js` contém funções puras de validação, limpeza de formulário, renderização e busca utilizando `map()`, `find()` e `reduce()`.
+- `app.js` contém a lógica principal, eventos e chamadas à API.
+- `api.js` contém a URL da API externa.
 
-## 🎯 Objetivo
+## 🧠 Refatorações aplicadas
 
-Esse projeto foi criado como exercício de estudo para praticar:
-
-- manipulação do DOM;
-- uso de eventos em JavaScript;
-- integração com API REST;
-- criação de interfaces simples e responsivas.
+- programação orientada a objetos com a classe `Cliente`;
+- separação do código em módulos específicos;
+- uso de funções puras e métodos funcionais `map()`, `find()` e `reduce()`;
+- manipulação do DOM via `addEventListener()` e renderização dinâmica;
+- validação de entrada antes de adicionar clientes;
+- atualização de interface sem recarregar a página.
 
 ## 🧑‍💻 Autor
 
