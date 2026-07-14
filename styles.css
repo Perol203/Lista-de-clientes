@@ -75,10 +75,8 @@ header {
 }
 
 .Add{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    justify-items: center;
+    display: block;
+    margin: 0 auto;
 }
 
 .Buscar:hover,
